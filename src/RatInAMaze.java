@@ -33,6 +33,27 @@ public class RatInAMaze {
 
     }
 
+    //BETTER
+    public static void ratInAMaze2(int arr[][],int i,int j,int res[][]){
+        if(i<0 || j<0 ||i>=arr.length||j>=arr[i].length || arr[i][j]==0 || res[i][j]==1){
+            return;
+        }else if(arr[i][j]==1){
+            res[i][j]=1;
+            if(i==res.length-1 && j==res[i].length-1){
+                printSolution(res);
+                res[i][j]=0;
+                return;
+            }
+
+            ratInAMaze(arr,i+1,j,res);
+            ratInAMaze(arr,i,j+1,res);
+            ratInAMaze(arr,i-1,j,res);
+            ratInAMaze(arr,i,j-1,res);
+            res[i][j]=0;
+        }
+
+    }
+
 
     private static void copyArray(int matrix[][],int myInt[][]){
         for(int i = 0; i< matrix.length; i++){
