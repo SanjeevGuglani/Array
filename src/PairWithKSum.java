@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Sanjeev Guglani
@@ -43,8 +45,27 @@ public class PairWithKSum {
 
     }
 
+    public static void pairSum2(int[] arr, int num){
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<arr.length;i++){
+            if(map.containsKey(num-arr[i])){
+                print(arr[i],num-arr[i],map.get(num-arr[i]));
+            }
+            if(!map.containsKey(arr[i])){
+                map.put(arr[i],0);
+            }
+            map.put(arr[i],map.get(arr[i])+1);
+        }
+    }
+
+
+
     public static void print(int a,int b,int count){
-        for(int i=1;i<=count;i++)
-            System.out.println(a+" "+b);
+        for(int i=1;i<=count;i++) {
+            if (a < b)
+                System.out.println(a + " " + b);
+            else
+                System.out.println(b + " " + a);
+        }
     }
 }
